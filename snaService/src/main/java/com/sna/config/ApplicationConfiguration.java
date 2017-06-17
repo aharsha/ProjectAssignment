@@ -22,7 +22,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 
 
-@Configuration
 @ComponentScan("com")
 @EnableTransactionManagement
 public class ApplicationConfiguration {

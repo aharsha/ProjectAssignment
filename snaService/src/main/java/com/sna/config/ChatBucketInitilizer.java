@@ -4,12 +4,14 @@ package com.sna.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.sna.snaBackEnd.config.HibernateConfig;
+
 public class ChatBucketInitilizer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {ChatBucketConfiguration.class,ApplicationConfiguration.class};
+		return new Class[] {ChatBucketConfiguration.class,HibernateConfig.class};
 	}
 
 	@Override
