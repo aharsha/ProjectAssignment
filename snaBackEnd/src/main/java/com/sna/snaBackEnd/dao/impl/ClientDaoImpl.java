@@ -41,4 +41,16 @@ public class ClientDaoImpl implements ClientDao{
 		return null;
 	}
 
+	@Override
+	public Client getClientWithUserName(String userName) {
+		// TODO Auto-generated method stub
+		try {
+		return	sessionFacory.getCurrentSession().createQuery("From Client where username=:username",Client.class).setParameter("username", userName).getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+			return null;
+		}
+	}
+
 }

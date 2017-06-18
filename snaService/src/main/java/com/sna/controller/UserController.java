@@ -22,5 +22,13 @@ public class UserController {
 		clientDao.addClient(client);
 		return new ResponseEntity<Client>(client,HttpStatus.OK);
 	}
+	
+	
+	@PostMapping("/login")
+	public ResponseEntity<Client> login(@RequestBody Client client)
+	{
+		Client c=clientDao.getClientWithUserName(client.getUserName());
+		return new ResponseEntity<Client>(c,HttpStatus.OK);
+	}
 
 }

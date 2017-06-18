@@ -1,8 +1,9 @@
-SNAFrondEnd.controller('HomeController',function(HomeServices,$route,$location){
+SNAFrondEnd.controller('HomeController',function(HomeServices,$rootScope,$route,$cookies,$location,$window){
 	
 	this.message="this is home controller";
 	var homeCtrl=this;
 	this.user={};
+	$rootScope.authenticated=$cookies.get('authenticated');
 	this.register=function()
 	{
 		console.log(homeCtrl.user);
@@ -11,6 +12,8 @@ SNAFrondEnd.controller('HomeController',function(HomeServices,$route,$location){
 		{
 			console.log(response);
 			$route.reload();
+			
+			
 		},
 		function(error)
 		{
@@ -18,5 +21,14 @@ SNAFrondEnd.controller('HomeController',function(HomeServices,$route,$location){
 		}
 		)
 	}
+	
+	this.logout=function()
+	{
+		$cookies.remove('authenticated');
+		$rootScope.authenticated=false;
+		$location.path("/")
+	}
+	
+	
 	
 })
