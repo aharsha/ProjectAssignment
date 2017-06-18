@@ -17,11 +17,11 @@ public class Client {
 	private Integer clientId;
 	@NotEmpty
 	@NotBlank
-	@Pattern(regexp="[a-zA-Z]{6,}", message="Username must contain only alphabet with atleast 6 characters")
+	@Pattern(regexp="[a-zA-Z]{3,}", message="FristName must contain only alphabet with atleast 6 characters")
 	private String firstName;
 	@NotBlank
 	@NotEmpty
-	@Pattern(regexp="[a-zA-Z]{6,}", message="Username must contain only alphabet with atleast 6 characters")
+	@Pattern(regexp="[a-zA-Z]{3,}", message="LastName must contain only alphabet with atleast 6 characters")
 	private String lastName;
 	@NotBlank
 	@NotEmpty
