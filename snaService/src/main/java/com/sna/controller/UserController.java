@@ -1,5 +1,7 @@
 package com.sna.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class UserController {
 	@Autowired
 	ClientDao clientDao;
 	
+	@Autowired
+	HttpSession httpSession;
+	
 	@PostMapping("/addClient")
 	public ResponseEntity<Client> addNewClinet(@RequestBody Client client)
 	{
@@ -28,7 +33,10 @@ public class UserController {
 	public ResponseEntity<Client> login(@RequestBody Client client)
 	{
 		Client c=clientDao.getClientWithUserName(client.getUserName());
+		if(c!=null)
 		return new ResponseEntity<Client>(c,HttpStatus.OK);
+		else
+			return new ResponseEntity<Client>(c,HttpStatus.UNAUTHORIZED);
 	}
 
 }

@@ -19,6 +19,10 @@ LoginModule.controller('LoginController',function(LoginServices,$location,$cooki
 				  $cookieStore.put("currentUser",response.data);
 				  $location.path("/userpage")
 				}
+			if(response.status=="401")
+				{
+				   $location.path("/");
+				}
 		}
 		)
 	
