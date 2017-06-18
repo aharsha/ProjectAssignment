@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
@@ -32,13 +32,13 @@ public class HibernateConfig {
 	
 	public Properties getProperties()
 	{
-		Properties props=new Properties();
-		props.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		props.put("hibernate.show_sql", "true");
-		props.put("hibernate.format_sql", "true");
-		props.put("hibernate.hbm2ddl.auto", "update");
-		
-		return props;
+		Properties properties=new Properties();
+		  properties.setProperty("hibernate.show_sql", "true");
+			properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+			properties.setProperty("hibernate.hbm2ddl.auto", "update");
+			properties.setProperty("hibernate.format_sql", "true");
+			
+			return properties;
 		
 	}
 	
@@ -55,7 +55,10 @@ public class HibernateConfig {
 	@Bean
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
 	{
-		return new  HibernateTransactionManager(sessionFactory);
+		HibernateTransactionManager htm=new HibernateTransactionManager();
+		htm.setSessionFactory(getSessionFactory());
+		System.out.println(htm);
+		return htm;
 		
 	}
 }

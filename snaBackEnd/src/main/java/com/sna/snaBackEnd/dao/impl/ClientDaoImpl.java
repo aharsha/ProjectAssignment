@@ -3,11 +3,13 @@ package com.sna.snaBackEnd.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sna.snaBackEnd.dao.ClientDao;
 import com.sna.snaBackEnd.model.Client;
 
-@Repository
+@Repository("clientDao")
+@Transactional
 public class ClientDaoImpl implements ClientDao{
 	
 	

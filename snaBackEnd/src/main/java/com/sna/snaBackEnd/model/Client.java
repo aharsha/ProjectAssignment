@@ -1,17 +1,46 @@
 package com.sna.snaBackEnd.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Client {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer clientId;
+	@NotEmpty
+	@NotBlank
+	@Pattern(regexp="[a-zA-Z]{6,}", message="Username must contain only alphabet with atleast 6 characters")
 	private String firstName;
+	@NotBlank
+	@NotEmpty
+	@Pattern(regexp="[a-zA-Z]{6,}", message="Username must contain only alphabet with atleast 6 characters")
 	private String lastName;
+	@NotBlank
+	@NotEmpty
+	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 	private String email;
+	@Pattern(regexp="[0-9]{10}")
 	private String mobile;
+	@NotEmpty
+	@NotBlank
+	@Pattern(regexp="[a-zA-Z]{6,}", message="Username must contain only alphabet with atleast 6 characters")
 	private String userName;
+	@NotBlank
+	@NotEmpty
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}")
 	private String password;
+	@NotBlank
+	@NotEmpty
+	@Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}")
+	@Transient
 	private String cpassword;
 	public Integer getClientId() {
 		return clientId;
