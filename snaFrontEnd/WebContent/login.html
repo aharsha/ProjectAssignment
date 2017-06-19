@@ -45,28 +45,35 @@
 										</div>
 									</div>
 								</form>
-								<form id="register-form" novalidate ng-submit="homeCtrl.register()" role="form" style="display: none;">
+								<form id="register-form" name="form" novalidate ng-submit="form.$valid && homeCtrl.register()" role="form" style="display: none;">
 									<div class="form-group">
-										<input type="text" name="firstName" id="firstName" ng-model="homeCtrl.user.firstName" tabindex="1" class="form-control" placeholder="First Name" value="">
+										<input type="text" name="firstName" id="firstName" ng-model="homeCtrl.user.firstName" tabindex="1" class="form-control" placeholder="First Name" value="" required="true" pattern="[a-zA-Z]{3,}">
+									<span ng-show="form.firstName.$invalid && form.firstName.$touched">Only Alphabe min of 3 char</span>
 									</div>
 									<div class="form-group">
-										<input type="text" name="lastName" id="lastName" ng-model="homeCtrl.user.lastName" tabindex="1" class="form-control" placeholder="Last Name" value="">
+										<input type="text" name="lastName" id="lastName" ng-model="homeCtrl.user.lastName" tabindex="1" class="form-control" placeholder="Last Name" value="" required="true" pattern="[a-zA-Z]{3,}">
+									<span ng-show="form.lastName.$invalid && form.lastName.$touched ">Only Alphabe min of 3 char</span>
 									</div>
 									<div class="form-group">
-										<input type="email" name="email" id="email" ng-model="homeCtrl.user.email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<input type="email" name="email" id="email" ng-model="homeCtrl.user.email" tabindex="1" class="form-control" placeholder="Email Address" value="" required="true" pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$">
+									<span ng-show="form.email.$invalid && form.email.$touched ">Enter a valid email Id</span>
 									</div>
 									<div class="form-group">
-										<input type="text" name="mobile" id="mobile" ng-model="homeCtrl.user.mobile" tabindex="1" class="form-control" placeholder="Mobile Number" value="">
+										<input type="text" name="mobile" id="mobile" ng-model="homeCtrl.user.mobile" tabindex="1" class="form-control" placeholder="Mobile Number" value="" required="true" pattern="[0-9]{10}">
+									<span ng-show="form.mobile.$invalid && form.mobile.$touched ">Enter a valid email Id</span>
 									</div>
 									<div class="form-group">
-										<input type="text" name="username" id="username" ng-model="homeCtrl.user.userName" tabindex="1" class="form-control" placeholder="Username" value="">
+										<input type="text" name="username" id="username" ng-model="homeCtrl.user.userName" tabindex="1" class="form-control" placeholder="Username" value="" required="true" pattern="[a-zA-Z]{3,}">
+									<span ng-show="form.username.$invalid && form.username.$touched ">only alphabet, min 3 char</span>
 									</div>
 									
 									<div class="form-group">
-										<input type="password" name="password" id="password" ng-model="homeCtrl.user.password" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="password" id="password" ng-model="homeCtrl.user.password" tabindex="2" class="form-control" placeholder="Password" required="true" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}">
+									<span ng-show="form.password.$invalid && form.password.$touched ">one capital,one small,one digit,one special char</span>
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" ng-model="homeCtrl.user.cpassword" tabindex="2" class="form-control" placeholder="Confirm Password">
+										<input type="password" name="confirm-password" id="confirm-password" ng-model="homeCtrl.user.cpassword" tabindex="2" class="form-control" placeholder="Confirm Password" required="true" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}">
+									<span ng-show="form.password.$invalid && form.password.$touched ">one capital,one small,one digit,one special char</span>
 									</div>
 									<div class="form-group">
 										<div class="row">

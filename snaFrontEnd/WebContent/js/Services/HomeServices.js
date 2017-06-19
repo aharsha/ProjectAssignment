@@ -18,4 +18,24 @@ SNAFrondEnd.service('HomeServices',function($http,$q,REST_URI){
 		return deffered.promise;
 		
 	}
+	
+	this.logout=function()
+	{
+		var deffered=$q.defer();
+		$http.get(REST_URI+"logout").then(
+			
+			function(success)
+			{
+				deffered.resolve(success);
+			},
+			function(error)
+			{
+				deffered.reject(error);
+			}
+			
+		)
+		return deffered.promise;
+		
+		
+	}
 })
